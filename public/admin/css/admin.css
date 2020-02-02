@@ -1,0 +1,120 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#app {
+    height: 100%;
+}
+.index {
+    height: 100%;
+
+}
+
+.index  .el-container {
+    height: 100%;
+
+}
+.index  .el-container .el-aside {
+    background-color: rgb(48, 65, 86);
+    color: #333;
+    height: 100%;
+
+
+}
+.el-header {
+    background-color: rgb(48, 65, 86);
+    color: #333;
+    line-height: 60px;
+}
+
+.el-menu {
+    border: none;
+    color: rgb(48, 65, 86);
+    background-color: rgb(48, 65, 86);;
+}
+.el-submenu__title {
+
+    color: #ffffff;
+}
+.el-submenu__title:hover {
+    background-color: #1c232a;
+}
+.el-submenu__title  i{
+    align-content: center;
+    color: #ffffff;
+}
+.el-menu-item {
+    background-color: rgb(48, 65, 86);;
+    color: #ffffff;
+}
+.el-menu-item:hover {
+    background-color: #1c232a;
+}
+.header  .el-header {
+    position: relative;
+    height: 60px;
+    line-height: 60px;
+    background-color: #ffffff;
+    text-align: right;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.header  .el-header .title {
+    margin: 0;
+    position: absolute;
+    height: 60px;
+    line-height: 60px;
+}
+.header  .el-header  .username {
+    vertical-align: top;
+    display: inline-block;
+    height: 60px;
+    line-height: 60px;
+    margin-right: 20px;
+}
+.header  .el-header  .username .avatar {
+    vertical-align: top;
+    display: inline-block;
+    margin-top: 5px;
+    margin-left: 10px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.footer  .el-footer {
+    height: 60px;
+    line-height: 60px;
+    background-color: #ffffff;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    font-size: 12px;
+    color: #2d3a4b;
+}
+
+.home {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.home  .el-main {
+    flex: 1;
+}
+.home  .el-main .el-card .el-card__header {
+    font-weight: 700;
+    font-size: 15px;
+    background-color: #fafafa;
+}
+
+
+.home  .el-main .el-card .el-card__header .el-card__body .item .el-alert {
+    margin-bottom: 20px;
+}
+
+a{
+    text-decoration:none;
+
+}
