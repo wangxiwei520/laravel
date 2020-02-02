@@ -9,6 +9,7 @@
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 //
 //
 //
@@ -74,7 +75,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  name: "App",
   data: function data() {
     return {
       // 登录表单数据对象
@@ -113,34 +116,10 @@ __webpack_require__.r(__webpack_exports__);
             password: _this.loginForm.password
           }; //                        前端验证通过请求后端
 
-          $(function () {
-            $.ajax({
-              type: "POST",
-              url: "{:url('admin/admin_admin/login')}",
-              data: params,
-              dataType: "json",
-              success: function success(data) {
-                if (data.code == 200) {
-                  layer.msg(data.msg, {
-                    icon: 1
-                  });
-                  localStorage.setItem("authMenu", data.data['menus']);
-                  localStorage.setItem("user", data.data['user']);
-                  setTimeout(function () {
-                    location.href = data.url;
-                  }, 1000);
-                } else {
-                  layer.msg(data.msg, {
-                    icon: 5
-                  });
-                }
-              },
-              error: function error(e) {
-                layer.msg('网络不好请稍后再试', {
-                  icon: 5
-                });
-              }
-            });
+          axios.post('/api/adminLoginVer', params).then(function (response) {
+            console.log(response);
+          })["catch"](function (error) {
+            console.log(error);
           });
         } else {
           return false;

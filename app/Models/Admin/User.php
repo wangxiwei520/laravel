@@ -12,4 +12,10 @@ class User extends Model
         $users = self::get();
         return $users;
     }
+
+
+    public function getUser($where,$filed)
+    {
+     return   $this->where($where)->select($filed)->first();
+    }
 }

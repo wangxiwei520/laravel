@@ -18,4 +18,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-//Route::any('/getUserList','Admin/UserController@userList');
+Route::post('/adminLoginVer','Admin\LoginController@login');
