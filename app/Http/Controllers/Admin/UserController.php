@@ -5,20 +5,21 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
-class UserController extends Controller
+class UserController extends BaseController
 {
 
-    /**
-     * @api {get} /userList  userList
-     * @apiName 用户登录
-     * @apiGroup 用户组
-     * @apiVersion 1.0.0
-     * @apiDescription 用户登录接口
-     * @apiParam {string} mobile 用户名或手机号码
-     */
-    public function userList()
+    //获取用户详情
+    public function userInfo()
     {
-        return (new User())->getInfo();
+      $user = array(
+          'id'=>$this->user->id,
+          'name'=>$this->user->name,
+          'img'=>$this->user->img,
+          'is_super'=>$this->user->is_super,
+          'group_id'=>$this->user->group_id,
+      );
+      return prompt('ok',200,$user);
     }
 }

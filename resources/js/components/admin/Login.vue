@@ -31,10 +31,6 @@
         margin: 0;
         padding: 0;
     }
-
-    div {
-        height: 100%;
-    }
     .login {
         background-color: #2d3a4b;
         height: 100%;
@@ -64,7 +60,6 @@
     }
 </style>
 <script>
-    import { mapState, mapActions } from 'vuex';
     export default {
         name: "App",
         data: function() {
@@ -96,14 +91,34 @@
 
                     if (valid) {
                         let params = {
-                            username: this.loginForm.username,
+                            name: this.loginForm.username,
                             password: this.loginForm.password
                         };
 //                        前端验证通过请求后端
-                        axios.post('/api/adminLoginVer',params).then(function (response) {
-                                console.log(response);
-                        }).catch(function (error) {
-                                console.log(error);
+                        axios.post('/api/adminLoginVer',params).then( response=> {
+                            var data = {
+                                data:response.data,
+                                callback:()=>{
+                                    //验证失败提示
+                                    if (response.data.code == 10000) {
+                                        this.commonFun.mistake(response.data.msg);
+                                        return;
+                                    }
+                                    //验证通过登录
+                                    if(response.data.code==200){
+                                        this.commonFun.successful(response.data.msg);
+                                        var api_token = response.data.data.token;
+                                        sessionStorage.setItem('api_token',api_token);
+                                        setTimeout(()=>{
+                                            this.$router.push('/');
+                                        },1500);
+                                    }
+                                }
+                            };
+                            this.commonFun.codeToMsg(data);
+                            // this.commonFun.codeToMsg(response);
+                        }).catch( error=> {
+                            this.commonFun.mistake('网络异常');
                             });
                     } else {
                         return false;
